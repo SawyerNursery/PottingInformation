@@ -62,7 +62,7 @@ namespace Potting_Information
             return PrintCommand;
         }
 
-        //bama label 3.5x2.5
+        //bama label 3.5x2.5 for Zebra EPL
         public static string Zebra_2844_35x25_PottingWorkOrder(DataRow rd, string[] Locations)
         {
             string desc1 = rd["Description"].ToString();

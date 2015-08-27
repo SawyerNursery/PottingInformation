@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="PottingDetailData" targetNamespace="http://tempuri.org/PottingDetailData.xsd" xmlns:mstns="http://tempuri.org/PottingDetailData.xsd" xmlns="http://tempuri.org/PottingDetailData.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="PottingDetailData" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="PottingDetailData" msprop:Generator_UserDSName="PottingDetailData">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="PottingSummaryDetail" msprop:Generator_TableClassName="PottingSummaryDetailDataTable" msprop:Generator_TableVarName="tablePottingSummaryDetail" msprop:Generator_TablePropName="PottingSummaryDetail" msprop:Generator_RowDeletingName="PottingSummaryDetailRowDeleting" msprop:Generator_RowChangingName="PottingSummaryDetailRowChanging" msprop:Generator_RowEvHandlerName="PottingSummaryDetailRowChangeEventHandler" msprop:Generator_RowDeletedName="PottingSummaryDetailRowDeleted" msprop:Generator_UserTableName="PottingSummaryDetail" msprop:Generator_RowChangedName="PottingSummaryDetailRowChanged" msprop:Generator_RowEvArgName="PottingSummaryDetailRowChangeEvent" msprop:Generator_RowClassName="PottingSummaryDetailRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="LotID" msprop:Generator_ColumnVarNameInTable="columnLotID" msprop:Generator_ColumnPropNameInRow="LotID" msprop:Generator_ColumnPropNameInTable="LotIDColumn" msprop:Generator_UserColumnName="LotID" type="xs:int" minOccurs="0" />
+              <xs:element name="UnitsPlanned" msprop:Generator_ColumnVarNameInTable="columnUnitsPlanned" msprop:Generator_ColumnPropNameInRow="UnitsPlanned" msprop:Generator_ColumnPropNameInTable="UnitsPlannedColumn" msprop:Generator_UserColumnName="UnitsPlanned" type="xs:short" minOccurs="0" />
+              <xs:element name="UnitsRemaining" msprop:Generator_ColumnVarNameInTable="columnUnitsRemaining" msprop:Generator_ColumnPropNameInRow="UnitsRemaining" msprop:Generator_ColumnPropNameInTable="UnitsRemainingColumn" msprop:Generator_UserColumnName="UnitsRemaining" type="xs:short" minOccurs="0" />
+              <xs:element name="ToProductID" msprop:Generator_ColumnVarNameInTable="columnToProductID" msprop:Generator_ColumnPropNameInRow="ToProductID" msprop:Generator_ColumnPropNameInTable="ToProductIDColumn" msprop:Generator_UserColumnName="ToProductID" type="xs:string" minOccurs="0" />
+              <xs:element name="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_UserColumnName="Description" type="xs:string" minOccurs="0" />
+              <xs:element name="Size" msprop:Generator_ColumnVarNameInTable="columnSize" msprop:Generator_ColumnPropNameInRow="Size" msprop:Generator_ColumnPropNameInTable="SizeColumn" msprop:Generator_UserColumnName="Size" type="xs:string" minOccurs="0" />
+              <xs:element name="QtyPerPot" msprop:Generator_ColumnVarNameInTable="columnQtyPerPot" msprop:Generator_ColumnPropNameInRow="QtyPerPot" msprop:Generator_ColumnPropNameInTable="QtyPerPotColumn" msprop:Generator_UserColumnName="QtyPerPot" type="xs:short" minOccurs="0" />
+              <xs:element name="TransWeek" msprop:Generator_ColumnVarNameInTable="columnTransWeek" msprop:Generator_ColumnPropNameInRow="TransWeek" msprop:Generator_ColumnPropNameInTable="TransWeekColumn" msprop:Generator_UserColumnName="TransWeek" type="xs:string" minOccurs="0" />
+              <xs:element name="Ready" msprop:Generator_ColumnVarNameInTable="columnReady" msprop:Generator_ColumnPropNameInRow="Ready" msprop:Generator_ColumnPropNameInTable="ReadyColumn" msprop:Generator_UserColumnName="Ready" type="xs:string" minOccurs="0" />
+              <xs:element name="CalculatedReady" msprop:Generator_ColumnVarNameInTable="columnCalculatedReady" msprop:Generator_ColumnPropNameInRow="CalculatedReady" msprop:Generator_ColumnPropNameInTable="CalculatedReadyColumn" msprop:Generator_UserColumnName="CalculatedReady" type="xs:string" minOccurs="0" />
+              <xs:element name="FromProductId" msprop:Generator_ColumnVarNameInTable="columnFromProductId" msprop:Generator_ColumnPropNameInRow="FromProductId" msprop:Generator_ColumnPropNameInTable="FromProductIdColumn" msprop:Generator_UserColumnName="FromProductId" type="xs:string" minOccurs="0" />
+              <xs:element name="Site" msprop:Generator_ColumnVarNameInTable="columnSite" msprop:Generator_ColumnPropNameInRow="Site" msprop:Generator_ColumnPropNameInTable="SiteColumn" msprop:Generator_UserColumnName="Site" type="xs:string" minOccurs="0" />
+              <xs:element name="FlatsRemaining" msprop:Generator_ColumnVarNameInTable="columnFlatsRemaining" msprop:Generator_ColumnPropNameInRow="FlatsRemaining" msprop:Generator_ColumnPropNameInTable="FlatsRemainingColumn" msprop:Generator_UserColumnName="FlatsRemaining" type="xs:short" minOccurs="0" />
+              <xs:element name="FromSize" msprop:Generator_ColumnVarNameInTable="columnFromSize" msprop:Generator_ColumnPropNameInRow="FromSize" msprop:Generator_ColumnPropNameInTable="FromSizeColumn" msprop:Generator_UserColumnName="FromSize" type="xs:string" minOccurs="0" />
+              <xs:element name="FlatsInStock" msprop:Generator_ColumnVarNameInTable="columnFlatsInStock" msprop:Generator_ColumnPropNameInRow="FlatsInStock" msprop:Generator_ColumnPropNameInTable="FlatsInStockColumn" msprop:Generator_UserColumnName="FlatsInStock" type="xs:short" minOccurs="0" />
+              <xs:element name="FlatsRunning" msprop:Generator_ColumnVarNameInTable="columnFlatsRunning" msprop:Generator_ColumnPropNameInRow="FlatsRunning" msprop:Generator_ColumnPropNameInTable="FlatsRunningColumn" msprop:Generator_UserColumnName="FlatsRunning" type="xs:short" minOccurs="0" />
+              <xs:element name="GHLocation" msprop:Generator_ColumnVarNameInTable="columnGHLocation" msprop:Generator_ColumnPropNameInRow="GHLocation" msprop:Generator_ColumnPropNameInTable="GHLocationColumn" msprop:Generator_UserColumnName="GHLocation" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

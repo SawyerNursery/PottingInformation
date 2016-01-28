@@ -78,10 +78,6 @@
       <HintPath>C:\MSDN\Kerr.Credentials\Kerr.Credentials.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
-    <Reference Include="Microsoft.VisualBasic.PowerPacks, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-    <Reference Include="Reports">
-      <HintPath>..\..\..\Code Snippets\Visual C#\Reports.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
@@ -102,6 +98,7 @@
     <Compile Include="frmLabelPrinting.Designer.cs">
       <DependentUpon>frmLabelPrinting.cs</DependentUpon>
     </Compile>
+    <Compile Include="Global4k.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="Preferances.cs">
       <SubType>Form</SubType>
@@ -123,7 +120,6 @@
     </Compile>
     <Compile Include="PottingDetailData.cs">
       <DependentUpon>PottingDetailData.xsd</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="PottingDetailData.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -138,9 +134,6 @@
     </Compile>
     <Compile Include="Reportviewer.Designer.cs">
       <DependentUpon>Reportviewer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="\\sharedstorage\SF\IT\IN HOUSE APPS\Source Code\Common\Global4k.cs">
-      <Link>Global4k.cs</Link>
     </Compile>
     <EmbeddedResource Include="frmLabelPrinting.resx">
       <DependentUpon>frmLabelPrinting.cs</DependentUpon>

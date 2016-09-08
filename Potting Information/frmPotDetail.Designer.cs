@@ -51,6 +51,7 @@
             this.dgPottingDetail = new System.Windows.Forms.DataGridView();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.chkSelectAll = new System.Windows.Forms.CheckBox();
+            this.ckCG = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgPottingDetail)).BeginInit();
             this.SuspendLayout();
@@ -81,7 +82,7 @@
             this.label1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(12, 29);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(66, 15);
+            this.label1.Size = new System.Drawing.Size(63, 15);
             this.label1.TabIndex = 3;
             this.label1.Text = "Plan Name";
             // 
@@ -105,7 +106,7 @@
             this.label2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(274, 29);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(27, 15);
+            this.label2.Size = new System.Drawing.Size(26, 15);
             this.label2.TabIndex = 5;
             this.label2.Text = "Site";
             // 
@@ -152,7 +153,7 @@
             this.label3.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(352, 29);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(65, 15);
+            this.label3.Size = new System.Drawing.Size(64, 15);
             this.label3.TabIndex = 11;
             this.label3.Text = "Completed";
             // 
@@ -189,7 +190,7 @@
             this.reportsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.sUMMARYREPORTToolStripMenuItem});
             this.reportsToolStripMenuItem.Name = "reportsToolStripMenuItem";
-            this.reportsToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
+            this.reportsToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
             this.reportsToolStripMenuItem.Text = "REPORTS";
             // 
             // sUMMARYREPORTToolStripMenuItem
@@ -204,7 +205,7 @@
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.optionsToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
             this.toolsToolStripMenuItem.Text = "TOOLS";
             // 
             // optionsToolStripMenuItem
@@ -216,7 +217,7 @@
             // 
             // btnLabels
             // 
-            this.btnLabels.Location = new System.Drawing.Point(611, 27);
+            this.btnLabels.Location = new System.Drawing.Point(728, 28);
             this.btnLabels.Name = "btnLabels";
             this.btnLabels.Size = new System.Drawing.Size(140, 20);
             this.btnLabels.TabIndex = 23;
@@ -245,14 +246,14 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(611, 54);
+            this.btnUpdate.Location = new System.Drawing.Point(728, 54);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(140, 20);
             this.btnUpdate.TabIndex = 25;
             this.btnUpdate.Text = "UPDATE RECORDS";
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
-
+            // 
             // chkSelectAll
             // 
             this.chkSelectAll.AutoSize = true;
@@ -266,11 +267,22 @@
             this.chkSelectAll.UseVisualStyleBackColor = true;
             this.chkSelectAll.Click += new System.EventHandler(this.chkSelectAll_Click);
             // 
+            // ckCG
+            // 
+            this.ckCG.AutoSize = true;
+            this.ckCG.Location = new System.Drawing.Point(583, 43);
+            this.ckCG.Name = "ckCG";
+            this.ckCG.Size = new System.Drawing.Size(103, 17);
+            this.ckCG.TabIndex = 27;
+            this.ckCG.Text = "Contract Grower";
+            this.ckCG.UseVisualStyleBackColor = true;
+            // 
             // frmPotDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 641);
+            this.Controls.Add(this.ckCG);
             this.Controls.Add(this.chkSelectAll);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.dgPottingDetail);
@@ -321,6 +333,7 @@
         private System.Windows.Forms.ToolStripMenuItem sUMMARYREPORTToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
         private System.Windows.Forms.CheckBox chkSelectAll;
+        private System.Windows.Forms.CheckBox ckCG;
     }
 }
 

@@ -77,6 +77,7 @@ namespace Potting_Information
             string StDate = dtmStartDate.Value.ToString();
             string EnDate = dtmEndDate.Value.ToString();
             int Completed = (cmbComplete.Text == "Yes") ? 1 : 0;
+            int CG = (ckCG.Checked == true) ? 1 : 0;
             string PlanID = cmbPlanName.SelectedValue.ToString();
 
             PottingQuery = @"SELECT
@@ -86,8 +87,8 @@ namespace Potting_Information
                 FROM 
 	                tblProdPlanProDetail INNER JOIN tblICInventory AS InvTo ON tblProdPlanProDetail.strTranSizeProductID = InvTo.strProductID 
 	                INNER JOIN tblICInventory AS InvFrom ON tblProdPlanProDetail.strSizeProductID = InvFrom.strProductID 
-                WHERE InvTo.strItemClass='Container Plants' AND tblProdPlanProDetail.ysnContract=0 AND
-                    InvTo.strCategory = '" + site+"' AND dtmTransplantWeek >= '"+StDate+"' AND dtmTransplantWeek <= '"+EnDate+"' AND "+
+                WHERE InvTo.strItemClass='Container Plants' AND tblProdPlanProDetail.ysnContract="+CG+" AND "+
+                   " InvTo.strCategory = '" + site+"' AND dtmTransplantWeek >= '"+StDate+"' AND dtmTransplantWeek <= '"+EnDate+"' AND "+
                     "tblProdPlanProDetail.ysnCompleted ="+Completed+" AND intPlanNameID = "+ PlanID +
                 "ORDER BY InvTo.memDescription, InvTo.strUnitMeasure, tblProdPlanProDetail.dtmTransplantWeek";
 

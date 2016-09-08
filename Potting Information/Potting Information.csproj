@@ -24,7 +24,7 @@
     <MapFileExtensions>true</MapFileExtensions>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>15</ApplicationRevision>
+    <ApplicationRevision>18</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -60,7 +60,7 @@
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>Potting_Information.Program</StartupObject>
@@ -75,7 +75,7 @@
     <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="Kerr.Credentials">
-      <HintPath>C:\MSDN\Kerr.Credentials\Kerr.Credentials.dll</HintPath>
+      <HintPath>\\nas2\PUBLIC\IT\IN HOUSE APPS\Source Code\Common\Kerr.Credentials.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
@@ -160,6 +160,8 @@
     <EmbeddedResource Include="Reportviewer.resx">
       <DependentUpon>Reportviewer.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
     <None Include="Potting Information_TemporaryKey.pfx" />
     <None Include="PottingDetailData.xsc">
       <DependentUpon>PottingDetailData.xsd</DependentUpon>

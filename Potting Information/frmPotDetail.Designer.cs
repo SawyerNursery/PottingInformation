@@ -52,6 +52,8 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.chkSelectAll = new System.Windows.Forms.CheckBox();
             this.ckCG = new System.Windows.Forms.CheckBox();
+            this.cmbItemType = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgPottingDetail)).BeginInit();
             this.SuspendLayout();
@@ -59,6 +61,7 @@
             // btnConnect
             // 
             this.btnConnect.BackColor = System.Drawing.Color.Red;
+            this.btnConnect.Enabled = false;
             this.btnConnect.Location = new System.Drawing.Point(921, 28);
             this.btnConnect.Name = "btnConnect";
             this.btnConnect.Size = new System.Drawing.Size(75, 46);
@@ -82,7 +85,7 @@
             this.label1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(12, 29);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(63, 15);
+            this.label1.Size = new System.Drawing.Size(66, 15);
             this.label1.TabIndex = 3;
             this.label1.Text = "Plan Name";
             // 
@@ -93,7 +96,7 @@
             "AL",
             "MI",
             "CG"});
-            this.cmbSite.Location = new System.Drawing.Point(303, 27);
+            this.cmbSite.Location = new System.Drawing.Point(493, 27);
             this.cmbSite.Name = "cmbSite";
             this.cmbSite.Size = new System.Drawing.Size(43, 21);
             this.cmbSite.TabIndex = 4;
@@ -104,9 +107,9 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(274, 29);
+            this.label2.Location = new System.Drawing.Point(464, 29);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(26, 15);
+            this.label2.Size = new System.Drawing.Size(27, 15);
             this.label2.TabIndex = 5;
             this.label2.Text = "Site";
             // 
@@ -127,7 +130,7 @@
             // btnSearch
             // 
             this.btnSearch.Enabled = false;
-            this.btnSearch.Location = new System.Drawing.Point(488, 28);
+            this.btnSearch.Location = new System.Drawing.Point(673, 28);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(88, 46);
             this.btnSearch.TabIndex = 9;
@@ -141,9 +144,9 @@
             this.cmbComplete.Items.AddRange(new object[] {
             "No",
             "Yes"});
-            this.cmbComplete.Location = new System.Drawing.Point(423, 27);
+            this.cmbComplete.Location = new System.Drawing.Point(613, 27);
             this.cmbComplete.Name = "cmbComplete";
-            this.cmbComplete.Size = new System.Drawing.Size(53, 21);
+            this.cmbComplete.Size = new System.Drawing.Size(43, 21);
             this.cmbComplete.TabIndex = 10;
             this.cmbComplete.Text = "No";
             // 
@@ -151,9 +154,9 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(352, 29);
+            this.label3.Location = new System.Drawing.Point(542, 29);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(64, 15);
+            this.label3.Size = new System.Drawing.Size(65, 15);
             this.label3.TabIndex = 11;
             this.label3.Text = "Completed";
             // 
@@ -217,7 +220,7 @@
             // 
             // btnLabels
             // 
-            this.btnLabels.Location = new System.Drawing.Point(728, 28);
+            this.btnLabels.Location = new System.Drawing.Point(767, 28);
             this.btnLabels.Name = "btnLabels";
             this.btnLabels.Size = new System.Drawing.Size(140, 20);
             this.btnLabels.TabIndex = 23;
@@ -246,13 +249,12 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(728, 54);
+            this.btnUpdate.Location = new System.Drawing.Point(767, 54);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(140, 20);
             this.btnUpdate.TabIndex = 25;
             this.btnUpdate.Text = "UPDATE RECORDS";
             this.btnUpdate.UseVisualStyleBackColor = true;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // chkSelectAll
             // 
@@ -270,18 +272,42 @@
             // ckCG
             // 
             this.ckCG.AutoSize = true;
-            this.ckCG.Location = new System.Drawing.Point(583, 43);
+            this.ckCG.Location = new System.Drawing.Point(494, 56);
             this.ckCG.Name = "ckCG";
             this.ckCG.Size = new System.Drawing.Size(103, 17);
             this.ckCG.TabIndex = 27;
             this.ckCG.Text = "Contract Grower";
             this.ckCG.UseVisualStyleBackColor = true;
             // 
+            // cmbItemType
+            // 
+            this.cmbItemType.FormattingEnabled = true;
+            this.cmbItemType.Items.AddRange(new object[] {
+            "Finished Containers",
+            "Plugs"});
+            this.cmbItemType.Location = new System.Drawing.Point(311, 28);
+            this.cmbItemType.Name = "cmbItemType";
+            this.cmbItemType.Size = new System.Drawing.Size(147, 21);
+            this.cmbItemType.TabIndex = 28;
+            this.cmbItemType.Text = "Finished Containers";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(274, 29);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(31, 15);
+            this.label4.TabIndex = 29;
+            this.label4.Text = "Type";
+            // 
             // frmPotDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 641);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.cmbItemType);
             this.Controls.Add(this.ckCG);
             this.Controls.Add(this.chkSelectAll);
             this.Controls.Add(this.btnUpdate);
@@ -334,6 +360,8 @@
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
         private System.Windows.Forms.CheckBox chkSelectAll;
         private System.Windows.Forms.CheckBox ckCG;
+        private System.Windows.Forms.ComboBox cmbItemType;
+        private System.Windows.Forms.Label label4;
     }
 }
 

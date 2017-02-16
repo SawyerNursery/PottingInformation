@@ -34,13 +34,14 @@ namespace Potting_Information
             selectColumn.TrueValue = true;
             dgPottingDetail.Columns.Insert(0, selectColumn);
             dgPottingDetail.Columns[0].Visible = false;
+            connectToDB();
         }
 
-        private void button1_Click(object sender, EventArgs e) //Test connection to SB
+        private void connectToDB()
         {
             if (Properties.Settings.Default.dbServer == "")
             {
-                if(MessageBox.Show("No database server configured. Press OK to do this now") == System.Windows.Forms.DialogResult.OK)
+                if (MessageBox.Show("No database server configured. Press OK to do this now") == System.Windows.Forms.DialogResult.OK)
                 {
                     frmPreferances form = new frmPreferances();
                     form.ShowDialog();
@@ -56,24 +57,33 @@ namespace Potting_Information
                     string dbPass = Properties.Settings.Default.dbPassword;
 
                     //This basically makes sure that we can connect to SBI. They can't select a plan unless they do this.
-                    Global.SetConnectionString("SBI", "Server="+dbServer+";Database="+dbName+";Integrated Security=SSPI;User ID="+dbUser+";Password="+dbPass);
-                    cmbPlanName.DataSource = Global.GetData("SELECT intPlanId, strPlanName FROM tblProdPlanName WHERE ysnPlanActive = 1").Tables[0];
-                    cmbPlanName.DisplayMember = "strPlanName";
-                    cmbPlanName.ValueMember = "intPlanID";
+                    //2-16-2017 Rewrite for new production module. SBI in house now.
+                    //Global.SetConnectionString("SBI","Server="+dbServer+";Database="+dbName+";Integrated Security=SSPI;User ID="+dbUser+";Password="+dbPass);
+                    Global.SetConnectionString(dbServer, dbName);
+                    cmbPlanName.DataSource = Global.GetData("execute usp_PI_SelectActivePlans").Tables[0];
+                    cmbPlanName.DisplayMember = "Description";
+                    cmbPlanName.ValueMember = "id";
 
                     btnConnect.BackColor = System.Drawing.Color.Green;
                     btnSearch.Enabled = true;
 
                     cmbPlanName.SelectedIndex = Properties.Settings.Default.defPlan;
-                } catch
+                }
+                catch
                 { MessageBox.Show("There was a problem connecting to the database. Check the connection settings"); }
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e) //Test connection to SB
+        {
+            connectToDB();
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
             string PottingQuery;
             string site = cmbSite.Text;
+            string type = cmbItemType.Text;
             string StDate = dtmStartDate.Value.ToString();
             string EnDate = dtmEndDate.Value.ToString();
             int Completed = (cmbComplete.Text == "Yes") ? 1 : 0;
@@ -184,15 +194,6 @@ namespace Potting_Information
             {   LotIds.Remove(0, 1);}
             return LotIds;
         }
-
-        private void btnUpdate_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
-
-
 
     }
 }

@@ -90,6 +90,7 @@
             // 
             // txtUname
             // 
+            this.txtUname.Enabled = false;
             this.txtUname.Location = new System.Drawing.Point(100, 143);
             this.txtUname.Name = "txtUname";
             this.txtUname.Size = new System.Drawing.Size(332, 20);
@@ -107,6 +108,7 @@
             // 
             // txtPass
             // 
+            this.txtPass.Enabled = false;
             this.txtPass.Location = new System.Drawing.Point(100, 182);
             this.txtPass.Name = "txtPass";
             this.txtPass.Size = new System.Drawing.Size(332, 20);
@@ -152,6 +154,7 @@
             // 
             // btnCredentials
             // 
+            this.btnCredentials.Enabled = false;
             this.btnCredentials.Location = new System.Drawing.Point(9, 254);
             this.btnCredentials.Name = "btnCredentials";
             this.btnCredentials.Size = new System.Drawing.Size(95, 35);

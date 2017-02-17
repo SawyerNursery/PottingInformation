@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using General;
 
 namespace Potting_Information
 {
@@ -18,7 +19,11 @@ namespace Potting_Information
         {
             InitializeComponent();
             PottingRecordSelection = pottingrecordselection;
-            cmbLabel.SelectedIndex = Properties.Settings.Default.defLabel;
+
+            cmbLabel.DataSource = Global.GetData("usp_PI_Get_Labels").Tables[0];
+            cmbLabel.DisplayMember = "printerName";
+            cmbLabel.ValueMember = "id";
+            cmbLabel.SelectedValue = Properties.Settings.Default.defLabel;
 
             DataTable Compressed = new DataTable();
 
@@ -55,17 +60,20 @@ namespace Potting_Information
         private void btnPrint_Click(object sender, EventArgs e)
         {
             //Set up for stepping through the grid
-            string PrintCommand="";
-            DataRow[] SelectedRows;
-            string[] FromLocations = new string[4];
+
+            StringBuilder output = new StringBuilder();
 
             foreach (DataGridViewRow row in dgLabels.Rows)
             {
-                if (Convert.ToInt32(row.Cells[0].Value) > 0)
+                output.Clear();
+                if (Convert.ToInt32(row.Cells[0].Value) > 0) //qty to print is > 0
                 {
-                    int i = 0;
-                    Array.Clear(FromLocations, 0, 4);
-                    SelectedRows = PottingRecordSelection.Tables[0].Select("LotID ="+Convert.ToInt32(row.Cells[1].Value));
+
+                    Global.GetData("usp_PI_InsertTempLabels @qtyToPrint=" + row.Cells[0].Value.ToString() +" ,@lotId="+
+                             row.Cells[1].Value.ToString() + ", @labelId="+ cmbLabel.SelectedValue.ToString());
+                    Global.GetData("usp_PI_PrintLabels");
+
+                    /* NDW 02-17-2017 Update for new production system
                     switch (cmbLabel.SelectedIndex)
                     { 
                         case 1:
@@ -79,31 +87,28 @@ namespace Potting_Information
                         default:
                             MessageBox.Show("Please select a valid label type.");
                             break;
-                    }
-                    foreach(DataRow dr in SelectedRows)
-                    {
-                        if (i < 4)
-                        { FromLocations[i] = dr["GHLocation"] + " - " + dr["FlatsInStock"]; }
-                        i++;
-                    }
-                    
+                    }*/
+
                 }
             }
             //DEBUGGING  MessageBox.Show(PrintCommand);
             // Allow the user to select a printer.
-            PrintDialog pd = new PrintDialog();
+            /* NDW - 02-17-2017 Update for new production system
+             * ....This all got a lot simpler
+             * 
+             * PrintDialog pd = new PrintDialog();
             pd.PrinterSettings = new System.Drawing.Printing.PrinterSettings();
             if (DialogResult.OK == pd.ShowDialog(this))
             {
                 // Send a printer-specific to the printer.
                 RawPrinterHelper.SendStringToPrinter(pd.PrinterSettings.PrinterName, PrintCommand);
                 
-            }
+            }*/
         }
 
         private void cmbLabel_Leave(object sender, EventArgs e)
         {
-            Properties.Settings.Default.defLabel = cmbLabel.SelectedIndex;
+            Properties.Settings.Default.defLabel = Int32.Parse(cmbLabel.SelectedValue.ToString());
             Properties.Settings.Default.Save();
         }
     }

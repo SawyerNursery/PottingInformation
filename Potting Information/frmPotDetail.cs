@@ -60,7 +60,7 @@ namespace Potting_Information
                     //2-16-2017 Rewrite for new production module. SBI in house now.
                     //Global.SetConnectionString("SBI","Server="+dbServer+";Database="+dbName+";Integrated Security=SSPI;User ID="+dbUser+";Password="+dbPass);
                     Global.SetConnectionString(dbServer, dbName);
-                    cmbPlanName.DataSource = Global.GetData("execute usp_PI_SelectActivePlans").Tables[0];
+                    cmbPlanName.DataSource = Global.GetData("usp_PI_SelectActivePlans").Tables[0];
                     cmbPlanName.DisplayMember = "Description";
                     cmbPlanName.ValueMember = "id";
 
@@ -86,21 +86,11 @@ namespace Potting_Information
             string type = cmbItemType.Text;
             string StDate = dtmStartDate.Value.ToString();
             string EnDate = dtmEndDate.Value.ToString();
-            int Completed = (cmbComplete.Text == "Yes") ? 1 : 0;
+            int Completed = (cmbComplete.Text == "Yes") ? 0 : 5;
             int CG = (ckCG.Checked == true) ? 1 : 0;
             string PlanID = cmbPlanName.SelectedValue.ToString();
 
-            PottingQuery = @"SELECT
-                tblProdPlanProDetail.dblLabelRemainingQty,tblProdPlanProDetail.dblLabelCompletedQty,tblProdPlanProDetail.dblPerPot,
-                tblProdPlanProDetail.strSizeProductID,tblProdPlanProDetail.strTransplantWeek,tblProdPlanProDetail.ready,
-                InvTo.memDescription,InvTo.strUnitMeasure As ToSize, InvFrom.strUnitMeasure as FromSize,tblProdPlanProDetail.cntID,InvTo.strCategory AS strLocation
-                FROM 
-	                tblProdPlanProDetail INNER JOIN tblICInventory AS InvTo ON tblProdPlanProDetail.strTranSizeProductID = InvTo.strProductID 
-	                INNER JOIN tblICInventory AS InvFrom ON tblProdPlanProDetail.strSizeProductID = InvFrom.strProductID 
-                WHERE InvTo.strItemClass='Container Plants' AND tblProdPlanProDetail.ysnContract="+CG+" AND "+
-                   " InvTo.strCategory = '" + site+"' AND dtmTransplantWeek >= '"+StDate+"' AND dtmTransplantWeek <= '"+EnDate+"' AND "+
-                    "tblProdPlanProDetail.ysnCompleted ="+Completed+" AND intPlanNameID = "+ PlanID +
-                "ORDER BY InvTo.memDescription, InvTo.strUnitMeasure, tblProdPlanProDetail.dtmTransplantWeek";
+            PottingQuery = "usp_PI_SelectPlanDetail @site="+site+",@startDate='"+StDate+"',@endDate='"+EnDate+"',@completed="+Completed+",@planId="+PlanID+",@cg="+CG+",@type='"+type+"'";
 
             PottingDS = Global.GetData(PottingQuery);
 
@@ -187,7 +177,7 @@ namespace Potting_Information
                 if (Convert.ToBoolean(row.Cells[0].Value) == true)
                 {
 
-                    LotIds.Append(",'" + row.Cells[10].Value.ToString() + "'");
+                    LotIds.Append("," + row.Cells[10].Value.ToString());
                 }
             }
             if (LotIds.Length > 0)

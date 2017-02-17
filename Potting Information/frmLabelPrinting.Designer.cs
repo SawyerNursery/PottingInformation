@@ -43,20 +43,21 @@
             this.dgLabels.AllowUserToResizeRows = false;
             this.dgLabels.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgLabels.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgLabels.Location = new System.Drawing.Point(-2, 50);
+            this.dgLabels.Location = new System.Drawing.Point(-2, 63);
             this.dgLabels.Name = "dgLabels";
             this.dgLabels.RowHeadersVisible = false;
             this.dgLabels.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgLabels.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgLabels.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgLabels.Size = new System.Drawing.Size(787, 556);
+            this.dgLabels.Size = new System.Drawing.Size(787, 543);
             this.dgLabels.TabIndex = 0;
             // 
             // btnPrint
             // 
+            this.btnPrint.BackgroundImage = global::Potting_Information.Properties.Resources.cchristeicon;
             this.btnPrint.Location = new System.Drawing.Point(12, 12);
             this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(100, 32);
+            this.btnPrint.Size = new System.Drawing.Size(100, 45);
             this.btnPrint.TabIndex = 1;
             this.btnPrint.Text = "PRINT";
             this.btnPrint.UseVisualStyleBackColor = true;
@@ -65,10 +66,7 @@
             // cmbLabel
             // 
             this.cmbLabel.FormattingEnabled = true;
-            this.cmbLabel.Items.AddRange(new object[] {
-            "Alabama (EPL 2.5x3.5)",
-            "Michigan (ZPL 3x3)"});
-            this.cmbLabel.Location = new System.Drawing.Point(194, 19);
+            this.cmbLabel.Location = new System.Drawing.Point(201, 19);
             this.cmbLabel.Name = "cmbLabel";
             this.cmbLabel.Size = new System.Drawing.Size(221, 21);
             this.cmbLabel.TabIndex = 2;
@@ -79,9 +77,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(129, 22);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 13);
+            this.label1.Size = new System.Drawing.Size(66, 13);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Label Style";
+            this.label1.Text = "Label Printer";
             // 
             // frmLabelPrinting
             // 

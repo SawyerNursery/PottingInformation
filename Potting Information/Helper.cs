@@ -205,36 +205,7 @@ namespace Potting_Information
         {
             string PottingDetailSQL;
 
-            PottingDetailSQL = @"
-                    SELECT 
-                        ppd.cntID as LotID, ppd.dblPlanUnits as UnitsPlanned, ppd.dblLabelRemainingQty as UnitsRemaining,
-                        i.strProductID as ToProductID, i.memDescription as Description, i.strUnitMeasure as Size, ppd.dblPerPot as QtyPerPot, 
-                        ppd.strTransplantWeek as TransWeek, ppd.ready as Ready,
-                        RIGHT('00'+CAST(DATEPART(WW,DATEADD(ww,ppd.dblFinWeeks,GETDATE())) as varchar),2)+ 
-                        right(CAST(DATEPART(YY,DATEADD(ww,ppd.dblFinWeeks,GETDATE())) as varchar),2) as CalculatedReady,
-                        ppd.strSizeProductID as FromProductId, i.strCategory as Site,
-                        Round(((ppd.dblLabelRemainingQty/ium.dblUnitMeasureQty)+0.5),0) AS FlatsRemaining, 
-                        ium.strUnitMeasure as FromSize, il.dblUnitsInStock/ium.dblUnitMeasureQty as FlatsInStock, 
-                        il.RunningTotal/ium.dblUnitMeasureQty as FlatsRunning, il.strDescription as GHLocation
-                        ,CASE WHEN ISNUMERIC(i.strManufactureNumber)=1 THEN round(cast(i.strManufactureNumber as float)*12,1) END AS SpaceFactor
-                    FROM tblProdPlanProDetail ppd
-                        INNER JOIN tblICInventory i ON ppd.strTranSizeProductID = i.strProductID 
-                        INNER JOIN tblICInventoryUnitMeasure ium ON ppd.strSizeProductID = ium.strProductID
-                        LEFT OUTER JOIN
-		                    (SELECT TOP 100 PERCENT
-			                    w.strDescription, id.strProductID, id.dblUnitsInStock,
-			                    (select SUM(dblUnitsInStock) from tblICInventoryDetail subid inner join tblICWarehouse subw
-				                    on subid.strWarehouseID = subw.strWarehouseID and subw.Priority=0 and subw.ysnPBS=0
-				                    where subid.strProductID=id.strProductID and subid.dblUnitsInStock<=id.dblUnitsInStock
-				                    and subid.dblUnitsInStock>0) as RunningTotal
-			                    FROM tblICWarehouse w
-			                    INNER JOIN tblICInventoryDetail id ON w.strWarehouseID = id.strWarehouseID 
-			                    INNER JOIN tblICInventory i ON id.strProductID = i.strProductID
-			                    WHERE w.strDescription<>'' AND w.Priority=0 AND w.ysnPBS=0 and id.dblUnitsInStock>0
-			                    ORDER BY id.strProductID asc, id.dblUnitsInStock asc
-		                    ) as il on il.strProductID=ppd.strSizeProductID
-                    WHERE
-                        ppd.cntID in (" + lotids.ToString() + ")";
+            PottingDetailSQL = "usp_PI_SelectPottingDetail @lotIDs='" + lotids.ToString() + "'";
 
             return Global.GetData(PottingDetailSQL);
         }

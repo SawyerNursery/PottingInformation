@@ -68,6 +68,7 @@ namespace Potting_Information
                     btnSearch.Enabled = true;
 
                     cmbPlanName.SelectedIndex = Properties.Settings.Default.defPlan;
+                    cmbItemType.Text = Properties.Settings.Default.defType;
                 }
                 catch
                 { MessageBox.Show("There was a problem connecting to the database. Check the connection settings"); }
@@ -185,5 +186,10 @@ namespace Potting_Information
             return LotIds;
         }
 
+        private void cmbItemType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.defType = cmbItemType.Text;
+            Properties.Settings.Default.Save();
+        }
     }
 }

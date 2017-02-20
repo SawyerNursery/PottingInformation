@@ -71,7 +71,6 @@ namespace Potting_Information
 
                     Global.GetData("usp_PI_InsertTempLabels @qtyToPrint=" + row.Cells[0].Value.ToString() +" ,@lotId="+
                              row.Cells[1].Value.ToString() + ", @labelId="+ cmbLabel.SelectedValue.ToString());
-                    Global.GetData("usp_PI_PrintLabels");
 
                     /* NDW 02-17-2017 Update for new production system
                     switch (cmbLabel.SelectedIndex)
@@ -91,6 +90,9 @@ namespace Potting_Information
 
                 }
             }
+
+            Global.GetData("usp_PI_PrintLabels");
+
             //DEBUGGING  MessageBox.Show(PrintCommand);
             // Allow the user to select a printer.
             /* NDW - 02-17-2017 Update for new production system

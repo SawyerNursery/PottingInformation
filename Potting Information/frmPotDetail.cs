@@ -19,7 +19,7 @@ namespace Potting_Information
     public partial class frmPotDetail : Form
     {
         DataSet PottingDS = new DataSet();
-
+        
         public frmPotDetail()
         {
             InitializeComponent();

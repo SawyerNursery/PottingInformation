@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
+using Microsoft.Win32;
 using General;
 //using Microsoft.VisualBasic.PowerPacks;
 
@@ -20,6 +15,8 @@ namespace Potting_Information
     {
         DataSet PottingDS = new DataSet();
         
+        RegistryKey jans = Global.get_reg_key("JANS", true); //Getting settings from registry now.
+
         public frmPotDetail()
         {
             InitializeComponent();
@@ -39,40 +36,42 @@ namespace Potting_Information
 
         private void connectToDB()
         {
-            if (Properties.Settings.Default.dbServer == "")
+            //if (Properties.Settings.Default.dbServer == "")
+            //{
+            //    if (MessageBox.Show("No database server configured. Press OK to do this now") == System.Windows.Forms.DialogResult.OK)
+            //    {
+            //        frmPreferances form = new frmPreferances();
+            //        form.ShowDialog();
+            //    }
+            //}
+            //else
+            //{
+            //Changing functionality to use registry settings for the new consolidated JANS system - NDW 04/20/2017
+            try
             {
-                if (MessageBox.Show("No database server configured. Press OK to do this now") == System.Windows.Forms.DialogResult.OK)
-                {
-                    frmPreferances form = new frmPreferances();
-                    form.ShowDialog();
-                }
+                string dbServer = jans.GetValue("dbHost").ToString();//Properties.Settings.Default.dbServer;
+                string dbName = jans.GetValue("dbName").ToString();//Properties.Settings.Default.dbName;
+                string dbUser = jans.GetValue("dbUser").ToString();//Properties.Settings.Default.dbUser;
+                string dbPass = jans.GetValue("dbPass").ToString();//Properties.Settings.Default.dbPassword;
+                string dbPort = jans.GetValue("dbPort").ToString();//Properties.Settings.Default.dbPassword;
+
+                //This basically makes sure that we can connect to SBI. They can't select a plan unless they do this.
+                //2-16-2017 Rewrite for new production module. SBI in house now.
+                //Global.SetConnectionString("SBI","Server="+dbServer+";Database="+dbName+";Integrated Security=SSPI;User ID="+dbUser+";Password="+dbPass);
+                Global.SetConnectionString(dbServer, dbName, dbPort, dbUser, dbPass);
+                cmbPlanName.DataSource = Global.GetData("usp_PI_SelectActivePlans").Tables[0];
+                cmbPlanName.DisplayMember = "Description";
+                cmbPlanName.ValueMember = "id";
+
+                btnConnect.BackColor = System.Drawing.Color.Green;
+                btnSearch.Enabled = true;
+
+                cmbPlanName.SelectedIndex = Properties.Settings.Default.defPlan;
+                cmbItemType.Text = Properties.Settings.Default.defType;
             }
-            else
-            {
-                try
-                {
-                    string dbServer = Properties.Settings.Default.dbServer;
-                    string dbName = Properties.Settings.Default.dbName;
-                    string dbUser = Properties.Settings.Default.dbUser;
-                    string dbPass = Properties.Settings.Default.dbPassword;
-
-                    //This basically makes sure that we can connect to SBI. They can't select a plan unless they do this.
-                    //2-16-2017 Rewrite for new production module. SBI in house now.
-                    //Global.SetConnectionString("SBI","Server="+dbServer+";Database="+dbName+";Integrated Security=SSPI;User ID="+dbUser+";Password="+dbPass);
-                    Global.SetConnectionString(dbServer, dbName);
-                    cmbPlanName.DataSource = Global.GetData("usp_PI_SelectActivePlans").Tables[0];
-                    cmbPlanName.DisplayMember = "Description";
-                    cmbPlanName.ValueMember = "id";
-
-                    btnConnect.BackColor = System.Drawing.Color.Green;
-                    btnSearch.Enabled = true;
-
-                    cmbPlanName.SelectedIndex = Properties.Settings.Default.defPlan;
-                    cmbItemType.Text = Properties.Settings.Default.defType;
-                }
-                catch
-                { MessageBox.Show("There was a problem connecting to the database. Check the connection settings"); }
-            }
+            catch
+            { MessageBox.Show("There was a problem connecting to the database. Check the connection settings"); }
+           // }
         }
 
         private void button1_Click(object sender, EventArgs e) //Test connection to SB
@@ -139,12 +138,6 @@ namespace Potting_Information
         private void btnLabels_Click(object sender, EventArgs e)
         {
             frmLabelPrinting form = new frmLabelPrinting(Helper.PottingDetailData(GetCheckedRows()));
-            form.ShowDialog();
-        }
-
-        private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmPreferances form = new frmPreferances();
             form.ShowDialog();
         }
 

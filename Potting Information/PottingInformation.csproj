@@ -93,7 +93,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\Common\Global4k.cs">
+    <Compile Include="..\..\Nursery-Production-Software\etc\Global4k.cs">
       <Link>Global4k.cs</Link>
     </Compile>
     <Compile Include="frmLabelPrinting.cs">
